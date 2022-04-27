@@ -5,7 +5,7 @@ const minValue = 180
 const maxValue = 300
 
 function setup() {
-    document.getElementById("update").onclick = ()=>{update()}
+    document.getElementById("update").onclick = update
     update()
 }
 
@@ -34,14 +34,11 @@ function update() {
 }
 function generateData(){
 
-    // Сколько будет нормальных значений
-    let usual_values_count = randIntInRange(10, 13)
-    // Сколько будет выбросов
-    const extra_values_count = randIntInRange(2, 4)
-    // Если сумма четная, добавим одно нормальное значение
-    if ((usual_values_count + extra_values_count) % 2 === 0){
-        usual_values_count += 1
-    }
+    // Сколько будет нормальных значений - нужно нечетное число
+    let usual_values_count = randIntInRange(4, 6)*2 + 1
+    // Сколько будет выбросов - нужно четное число
+    const extra_values_count = randIntInRange(1, 2)
+
     const values = []
     // Записываем нормальные значения
     for (let i = 0; i < usual_values_count; i ++){
